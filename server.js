@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 	res.send("It's working");
 })
 
-app.listen(process.env.DATABASE_URL || 4001, () => {
-	console.log(`app is running on port ${process.env.DATABASE_URL}`);
+
+app.listen(process.env.PORT || 4001, () => {
+	console.log(`app is running on port ${process.env.PORT}`)
 })
