@@ -1,0 +1,32 @@
+{
+  "name": "secret-santa-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WCPeragine/secret-santa-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WCPeragine/secret-santa-api/issues"
+  },
+  "homepage": "https://github.com/WCPeragine/secret-santa-api#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
