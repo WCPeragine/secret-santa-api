@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 	res.send("It's working");
 })
 
-app.post('./signin', (req, res) {
+app.post('./signin', (req, res) => {
 	signIn.handleSignIn(req, res, db, bcrypt)
 })
 
