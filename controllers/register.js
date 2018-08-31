@@ -4,12 +4,12 @@ function handleRegister(req, res, db, bcrypt){
 		return res.status(400).json('Missing Credentials')
 	}
 
-	db.select('email').from('login')
+	db.select('hash').from('login')
 	.where('email', '=', email)
 	.then(data => {
-		if (data[0].hash !== null) {
-			return res.status(400).json(alreadyRegistered)
-		}else {
+		if (data.length) {
+			return res.status(400).json(data)
+		} else {
 			const hash = bcrypt.hashSync(password)
 			db('login')
 			.where('email', '=', email)
