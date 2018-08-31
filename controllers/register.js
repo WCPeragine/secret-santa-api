@@ -6,7 +6,7 @@ function handleRegister(req, res, db, bcrypt){
 	const alreadyRegistered = db.select('email').from('login')
 	.where('email', '=', email)
 	.then(data => {
-		data[0].hash
+		res.json(data[0].hash)
 	})
 
 	if (alreadyRegistered !== null) {
