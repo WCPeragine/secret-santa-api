@@ -9,7 +9,7 @@ function handleRegister(req, res, db, bcrypt){
 		data[0].hash
 	})
 
-	if (alreadyRegistered) {
+	if (alreadyRegistered !== null) {
 		return res.status(400).json("You have already registered")
 	}
 
