@@ -10,7 +10,7 @@ function handleRegister(req, res, db, bcrypt){
 	})
 
 	if (alreadyRegistered !== null) {
-		return res.status(400).json("You have already registered")
+		return res.status(400).json(alreadyRegistered)
 	}
 
 	const hash = bcrypt.hashSync(password)
