@@ -1,4 +1,4 @@
-const handleRegister = (req, res, db, bcrypt) => {
+function handleRegister(req, res, db, bcrypt){
 	const {email, password} = req.body;
 	if (!email || !password){
 		return res.status(400).json('Missing Credentials')
@@ -20,3 +20,7 @@ const handleRegister = (req, res, db, bcrypt) => {
 	})
 	.catch(err => res.status(400).json('Incorrect Email'))
 }
+
+module.exports = {
+	handleRegister: handleRegister
+};
