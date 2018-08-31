@@ -7,7 +7,7 @@ function handleRegister(req, res, db, bcrypt) {
 	db('login')
 	.where('email', '=', email)
 	.update({
-		hash: hash;
+		hash: hash
 	})
 	.returning('email')
 	.then(loginEmail => {
