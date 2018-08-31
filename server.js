@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 
+const register = require('./controllers/register');
+const signIn = require('./controllers/signin');
+const profile = require('./controllers/profile')
+
 const db = knex({
   client: 'pg',
   connection: {
@@ -16,10 +20,18 @@ const app = express();
 
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send("It's working");
+})
+
+app.post('./signin', (req, res) {
+	signIn.handleSignIn(req, res, db, bcrypt)
+})
+
+app.post('/register', (req, res) => {
+	register.handleRegister(req, res, db, bcrypt)
 })
 
 
