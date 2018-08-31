@@ -8,7 +8,7 @@ function handleRegister(req, res, db, bcrypt){
 	.where('email', '=', email)
 	.then(data => {
 		if (data[0].hash) {
-			return res.status(400).json(data[0].hash)
+			return res.status(400).json("Registration failed")
 		} else {
 			const hash = bcrypt.hashSync(password)
 			db('login')
