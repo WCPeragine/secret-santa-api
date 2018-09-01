@@ -21,10 +21,11 @@ function setGiftee(req, res, db){
 	.where('user_id', '=', user_id)
 	.orWhere('user_id', '=', giftee_id)
 	.then(data => {
+		const num;
 		if (data[0].user_id === user_id){
-			const num = 0
+			num = 0;
 		} else {
-			const num = 1
+			num = 1;
 		}
 
 		if(!data[num].giftee_id){
