@@ -7,7 +7,7 @@ const knex = require('knex');
 const register = require('./controllers/register');
 const signIn = require('./controllers/signin');
 const giftee = require('./controllers/giftee')
-const profile = require('./controllers/profile');
+
 
 const db = knex({
   client: 'pg',
@@ -35,8 +35,12 @@ app.post('/register', (req, res) => {
 	register.handleRegister(req, res, db, bcrypt)
 })
 
-app.get('/giftee', (req, res) => {
+app.get('/giftee/select', (req, res) => {
 	giftee.selectGiftee(req, res, db)
+})
+
+app.post('/giftee/set', (req, res) => {
+	giftee.setGiftee(req, res, db)
 })
 
 
