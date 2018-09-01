@@ -1,5 +1,5 @@
 function selectGiftee(req, res, db){
-	db.select('name', 'user_id', 'giftee_id', 'group_id').from('uses')
+	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
 		if (data.length) {
 			res.json(data)
