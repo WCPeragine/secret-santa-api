@@ -22,14 +22,18 @@ function setGiftee(req, res, db){
 	.orWhere('user_id', '=', giftee_id)
 	.then(data => {
 		if(!data[0].giftee_id){
-			db('users').where('user_id', '=', user_id)
-			.update({
-				giftee_id: giftee_id
-			})
-			.then(resp => {
-				res.json("Successfully registered giftee")
-			})
-			.catch(err => res.status(400).json('Giftee already taken'))
+			if(data[0].group_id !== data[1].group_id){
+				db('users').where('user_id', '=', user_id)
+				.update({
+					giftee_id: giftee_id
+				})
+				.then(resp => {
+					res.json("Successfully registered giftee")
+				})
+				.catch(err => res.status(400).json('Giftee already taken'))
+			} else {
+				res.status(400).json('Giftee is spouse')
+			}
 		} else {
 			res.status(400).json('User already has a giftee')
 		}
