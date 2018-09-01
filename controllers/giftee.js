@@ -31,6 +31,8 @@ function setGiftee(req, res, db){
 		}
 	})
 
+	return res.json('Giftee Registered')
+
 }
 
 module.exports = {
