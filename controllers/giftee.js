@@ -25,13 +25,15 @@ function setGiftee(req, res, db){
 			.update({
 				giftee_id: giftee_id
 			})
+			.then(resp => {
+				res.json("Successfully registered giftee")
+			})
 			.catch(err => res.status(400).json('Incorrect user'))
 		} else {
 			res.status(400).json('User already has a giftee')
 		}
 	})
 
-	return res.json('Giftee Registered')
 
 }
 
