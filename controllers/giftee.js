@@ -20,7 +20,7 @@ function setGiftee(req, res, db){
 	db.select('giftee_id').from('users')
 	.where('user_id', '=', user_id)
 	.then(data => {
-		if(data.length){
+		if(data[0].length){
 			db('users').where('user_id', '=', user_id)
 			.update({
 				giftee_id: giftee_id
