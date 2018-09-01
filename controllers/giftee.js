@@ -1,4 +1,5 @@
 function selectGiftee(req, res, db){
+	const {user_id, group_id} = req.body
 	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
 		if (data.length) {

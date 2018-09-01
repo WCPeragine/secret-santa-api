@@ -35,7 +35,7 @@ app.post('/register', (req, res) => {
 	register.handleRegister(req, res, db, bcrypt)
 })
 
-app.get('/giftee/select', (req, res) => {
+app.post('/giftee/select', (req, res) => {
 	giftee.selectGiftee(req, res, db)
 })
 
