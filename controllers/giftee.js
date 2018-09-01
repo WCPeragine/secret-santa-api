@@ -26,6 +26,8 @@ function setGiftee(req, res, db){
 		} else {
 			const num = 1
 		}
+
+		res.json(num)
 		if(!data[num].giftee_id){
 			if(data[0].group_id !== data[1].group_id){
 				db('users').where('user_id', '=', user_id)
