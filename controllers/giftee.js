@@ -22,7 +22,7 @@ function setGiftee(req, res, db){
 	.then(data => {
 		if(data.length){
 			db('users').where('user_id', '=', user_id)
-			update({
+			.update({
 				giftee_id: giftee_id
 			})
 			.catch(err => res.status(400).json('Incorrect user'))
