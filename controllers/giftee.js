@@ -1,3 +1,7 @@
+function filterTaken(id){
+
+}
+
 function selectGiftee(req, res, db){
 	const {user_id, group_id} = req.body
 	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
@@ -6,13 +10,25 @@ function selectGiftee(req, res, db){
 // only sending available giftees
 
 			const taken = [];
+			const fullList = [];
+			let available = [];
 
+// figure out which giftees are taken
 			data.forEach( user => {
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id)
 				}
 			})
-			res.json(taken)
+// add all giftees to a list
+			data.forEach( user => {
+				fullList.push(user.user_id)
+			})
+
+// remove all taken giftees, self, and spouse from available list
+			available = fullList.filter(val => !taken.includes(val));
+
+// respond with only giftees that are not taken
+			res.json(available)
 
 
 
