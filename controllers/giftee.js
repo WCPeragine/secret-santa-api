@@ -3,7 +3,21 @@ function selectGiftee(req, res, db){
 	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
 		if (data.length) {
-			res.json(data)
+// only sending available giftees
+
+			const taken = [];
+
+			data.forEach( user => {
+				if (user.giftee_id !== null){
+					taken.push(user.giftee_id)
+				}
+			})
+			res.json(taken)
+
+
+
+
+
 		} else {
 			res.status(400).json('Unable to find giftees')
 		}
