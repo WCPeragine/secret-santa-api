@@ -21,7 +21,12 @@ function setGiftee(req, res, db){
 	.where('user_id', '=', user_id)
 	.orWhere('user_id', '=', giftee_id)
 	.then(data => {
-		if(!data[0].giftee_id){
+		if(data[0].user_id === user_id) {
+			const id = 0
+		} else {
+			const id = 1
+		}
+		if(!data[id].giftee_id){
 			if(data[0].group_id !== data[1].group_id){
 				db('users').where('user_id', '=', user_id)
 				.update({
