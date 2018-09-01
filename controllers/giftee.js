@@ -16,10 +16,11 @@ function setGiftee(req, res, db){
 	if (!user_id || !giftee_id || user_id === giftee_id) {
 		return res.status(400).json('Incorrect information')
 	}
-	return res.json(user_id)
+
 	db.select('giftee_id').from('users')
 	.where('user_id', '=', user_id)
 	.then(data => {
+		return res.json(data)
 		if(data.length){
 			db('users').where('user_id', '=', user_id)
 			.update({
