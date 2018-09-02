@@ -18,7 +18,7 @@ function selectGiftee(req, res, db){
 			const fullList = [];
 			let available = [];
 			let filteredAvailable = [];
-			const groupWeight = {
+			let groupWeight = {
 				a: 0,
 				b: 0,
 				c: 0,
