@@ -1,6 +1,6 @@
 function chooseGiftee(avail){
 	const int = avail.length;
-	const index = Math.floor((Math.random() * i) + 1);
+	const index = Math.floor((Math.random() * int) + 1);
 	return avail[index];
 }
 
