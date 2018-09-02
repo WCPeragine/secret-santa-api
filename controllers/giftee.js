@@ -156,6 +156,7 @@ function setGiftee(req, res, db){
 }
 
 module.exports = {
+	chooseGiftee,
 	selectGiftee,
 	setGiftee
 }
