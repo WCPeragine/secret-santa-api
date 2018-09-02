@@ -12,7 +12,6 @@ function selectGiftee(req, res, db){
 	.then (data => {
 		if (data.length) {
 // only sending available giftees
-			res.json(data)
 
 
 			let newGiftee;
@@ -66,6 +65,8 @@ function selectGiftee(req, res, db){
 					}
 				}
 			})
+
+			res.json(groupWeight)
 
 
 // add all giftees to a list
