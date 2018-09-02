@@ -83,13 +83,10 @@ function selectGiftee(req, res, db){
 			switch(lowWeight){
 				case a:
 					candidates.push(1, 2);
-					break;
 				case b:
 					candidates.push(3, 4);
-					break;
 				case c:
 					candidates.push(5, 6);
-					break;
 				case d:
 					candidates.push(7, 8);
 					break;
