@@ -75,7 +75,6 @@ function selectGiftee(req, res, db){
 
 // only add available giftees to available list
 			available = fullList.filter(val => !taken.includes(val));
-res.json(available)
 // Choose from what is available based on groupWeight
 
 			let {a, b, c, d} = groupWeight;
@@ -97,6 +96,8 @@ res.json(available)
 			}
 
 			filteredAvailable = available.filter(val => candidates.includes(val));
+
+			res.json(filteredAvailable)
 
 			newGiftee = chooseGiftee(filteredAvailable);
 
