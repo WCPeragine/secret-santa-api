@@ -108,8 +108,8 @@ function selectGiftee(req, res, db){
 			})
 			.then(update => {
 				res.json(update[0])
-				)
-			}
+				
+			})
 
 
 
