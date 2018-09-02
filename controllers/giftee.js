@@ -30,17 +30,21 @@ function selectGiftee(req, res, db){
 			data.forEach( user => {
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id);
-					switch (user.group_id){
+					switch (user.giftee_id){
 						case 1:
+						case 2:
 							groupWeight.a++;
 							break;
-						case 2:
+						case 3:
+						case 4:
 							groupWeight.b++;
 							break;
-						case 3:
+						case 5:
+						case 6:
 							groupWeight.c++; 
 							break;
-						case 4:
+						case 7:
+						case 8:
 							groupWeight.d++;
 							break;
 					}
