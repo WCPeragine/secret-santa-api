@@ -66,13 +66,13 @@ function selectGiftee(req, res, db){
 				}
 			})
 
-			res.json(groupWeight)
-
 
 // add all giftees to a list
 			data.forEach( user => {
 				fullList.push(user.user_id)
 			})
+
+			res.json(fullList)
 
 // only add available giftees to available list
 			available = fullList.filter(val => !taken.includes(val));
