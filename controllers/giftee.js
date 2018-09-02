@@ -1,4 +1,4 @@
-chooseGiftee(avail){
+function chooseGiftee(avail){
 	const int = avail.length;
 	const index = Math.floor((Math.random() * i) + 1);
 	return avail[index];
@@ -156,7 +156,6 @@ function setGiftee(req, res, db){
 }
 
 module.exports = {
-	chooseGiftee,
 	selectGiftee,
 	setGiftee
 }
