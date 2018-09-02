@@ -12,7 +12,9 @@ function selectGiftee(req, res, db){
 	.then (data => {
 		if (data.length) {
 // only sending available giftees
-			
+			res.json(data)
+
+
 			let newGiftee;
 			const taken = [];
 			const fullList = [];
