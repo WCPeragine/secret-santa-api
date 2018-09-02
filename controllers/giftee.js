@@ -31,16 +31,16 @@ function selectGiftee(req, res, db){
 					taken.push(user.giftee_id);
 					switch (user.group_id){
 						case 1:
-							groupWeight.a +=;
+							groupWeight.a++;
 							break;
 						case 2:
-							groupWeight.b +=;
+							groupWeight.b++;
 							break;
 						case 3:
-							groupWeight.c +=;
+							groupWeight.c++; 
 							break;
 						case 4:
-							groupWeight.d +=;
+							groupWeight.d++;
 							break;
 					}
 				}
@@ -51,15 +51,15 @@ function selectGiftee(req, res, db){
 						case 2:
 						case 3:
 						case 4:
-							groupWeight.a +=;
-							groupWeight.b +=;
+							groupWeight.a++;
+							groupWeight.b++;
 							break;
 						case 5:
 						case 6:
 						case 7:
 						case 8:
-							groupWeight.c +=;
-							groupWeight.d +=;
+							groupWeight.c++;
+							groupWeight.d++;
 							break;
 					}
 				}
