@@ -114,7 +114,7 @@ function selectGiftee(req, res, db){
 				res.json(newGiftee)
 				
 			})
-			.catch(err => res.status(400).json(groupWeight))
+			.catch(err => res.status(400).json("Unable to update"))
 
 
 
