@@ -52,15 +52,15 @@ function selectGiftee(req, res, db){
 						case 2:
 						case 3:
 						case 4:
-							groupWeight.a++;
-							groupWeight.b++;
+							groupWeight.a += 10;
+							groupWeight.b += 10;
 							break;
 						case 5:
 						case 6:
 						case 7:
 						case 8:
-							groupWeight.c++;
-							groupWeight.d++;
+							groupWeight.c += 10;
+							groupWeight.d += 10;
 							break;
 					}
 				}
