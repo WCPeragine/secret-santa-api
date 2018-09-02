@@ -104,7 +104,6 @@ function selectGiftee(req, res, db){
 // update database and respond with the chosen giftee
 			db('users')
 			.where('user_id', '=', user_id)
-			.andWhere('giftee_id', '=', null)
 			.update({
 				'giftee_id': newGiftee
 			})
