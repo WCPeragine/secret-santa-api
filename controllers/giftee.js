@@ -4,6 +4,24 @@ function chooseGiftee(avail){
 	return avail[index-1];
 }
 
+function getCandidates(weights){
+		let {a, b, c, d} = weights;
+		let lowWeight = Math.min(a, b, c, d);
+		let candidates = [];
+		switch(lowWeight){
+			case a:
+				candidates.push(1, 2);
+			case b:
+				candidates.push(3, 4);
+			case c:
+				candidates.push(5, 6);
+			case d:
+				candidates.push(7, 8);
+				break;
+		}
+		return candidates;
+}
+
 
 
 function selectGiftee(req, res, db){
@@ -31,7 +49,7 @@ function selectGiftee(req, res, db){
 			data.forEach( user => {
 				if (user.user_id === user_id && user.giftee_id !== null){
 					return res.json("User already has a giftee")
-				}
+				} else {}
 
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id);
@@ -81,27 +99,16 @@ function selectGiftee(req, res, db){
 				fullList.push(user.user_id)
 			})
 
-
 // only add available giftees to available list
+
 			available = fullList.filter(val => !taken.includes(val));
+
 // Choose from what is available based on groupWeight
-
-			let {a, b, c, d} = groupWeight;
-			let lowWeight = Math.min(a, b, c, d);
-			let candidates = [];
-			switch(lowWeight){
-				case a:
-					candidates.push(1, 2);
-				case b:
-					candidates.push(3, 4);
-				case c:
-					candidates.push(5, 6);
-				case d:
-					candidates.push(7, 8);
-					break;
-			}
-
-			filteredAvailable = available.filter(val => candidates.includes(val));
+			
+			filteredAvailable = available.filter(val => {
+				getCandidates(groupWeight)
+				.includes(val)
+			})
 
 			newGiftee = chooseGiftee(filteredAvailable);
 
@@ -125,9 +132,11 @@ function selectGiftee(req, res, db){
 		} else {
 			res.status(400).json('Unable to find giftees')
 		}
+	
 
 	})
 	.catch(err => res.status(400).json('Could not load giftees'))
+
 }
 
 function setGiftee(req, res, db){
