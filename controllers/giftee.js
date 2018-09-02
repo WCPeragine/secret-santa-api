@@ -1,23 +1,71 @@
+chooseGiftee(avail){
+	const int = avail.length;
+	const index = Math.floor((Math.random() * i) + 1);
+	return avail[index];
+}
+
+
+
 function selectGiftee(req, res, db){
-	const {user_id, group_id} = req.body
+	const {user_id, spouse_id, group_id} = req.body
 	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
 		if (data.length) {
 // only sending available giftees
-
+			
+			let newGiftee;
 			const taken = [];
 			const fullList = [];
 			let available = [];
+			let filteredAvailable = [];
+			const groupWeight = {
+				a: 0,
+				b: 0,
+				c: 0,
+				d: 0
+			}
 
-// figure out which giftees are taken
+// figure out which giftees are taken and set weight for already picked groups 
 			data.forEach( user => {
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id)
+					switch (user.group_id){
+						case 1:
+							groupWeight.a +=;
+							break;
+						case 2:
+							groupWeight.b +=;
+							break;
+						case 3:
+							groupWeight.c +=;
+							break;
+						case 4:
+							groupWeight.d +=;
+							break;
+					}
 				}
 				if (user.group_id === group_id) {
 					taken.push(user.user_id)
+					switch(user.giftee_id){
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+							groupWeight.a +=;
+							groupWeight.b +=;
+							break;
+						case 5:
+						case 6:
+						case 7:
+						case 8:
+							groupWeight.c +=;
+							groupWeight.d +=;
+							break;
+					}
 				}
 			})
+
+
 // add all giftees to a list
 			data.forEach( user => {
 				fullList.push(user.user_id)
@@ -26,8 +74,36 @@ function selectGiftee(req, res, db){
 // only add available giftees to available list
 			available = fullList.filter(val => !taken.includes(val));
 
-// respond with only giftees that are not taken
-			res.json(available)
+// Choose from what is available based on groupWeight
+
+			let {a, b, c, d} = groupWeight;
+			let lowWeight = Math.min(a, b, c, d);
+			let candidates = [];
+			switch(lowWeight){
+				case a:
+					candidates.push(1, 2);
+					break;
+				case b:
+					candidates.push(3, 4);
+					break;
+				case c:
+					candidates.push(5, 6);
+					break;
+				case d:
+					candidates.push(7, 8);
+					break;
+			}
+
+			filteredAvailable = available.filter(val => candidates.includes(val));
+
+			newGiftee = chooseGiftee(filteredAvailable);
+
+
+
+// update database to include the new giftee
+
+// respond with the chosen giftee
+			res.json(newGiftee)
 
 
 
