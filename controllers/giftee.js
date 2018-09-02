@@ -10,6 +10,7 @@ function selectGiftee(req, res, db){
 	const {user_id, spouse_id, group_id} = req.body
 	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
+
 		if (data.length) {
 // only sending available giftees
 
@@ -28,6 +29,10 @@ function selectGiftee(req, res, db){
 
 // figure out which giftees are taken and set weight for already picked groups 
 			data.forEach( user => {
+				if (user.user_id === user_id && user.giftee_id !== null){
+					return res.json("User already has a giftee")
+				}
+
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id);
 					switch (user.giftee_id){
