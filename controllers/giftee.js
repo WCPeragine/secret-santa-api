@@ -106,9 +106,10 @@ function selectGiftee(req, res, db){
 			.update({
 				'giftee_id': newGiftee
 			})
-
-
-			res.json(newGiftee)
+			.then(update => {
+				res.json(update[0])
+				)
+			}
 
 
 
