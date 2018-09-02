@@ -101,6 +101,13 @@ function selectGiftee(req, res, db){
 // update database to include the new giftee
 
 // respond with the chosen giftee
+			db('users')
+			.where('user_id', '=', user_id)
+			.update({
+				'giftee_id': newGiftee
+			})
+
+
 			res.json(newGiftee)
 
 
