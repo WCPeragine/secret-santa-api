@@ -17,13 +17,15 @@ function selectGiftee(req, res, db){
 
 		if (data.length) {
 // only sending available giftees
-
+			
 
 			let newGiftee;
 			const taken = [];
 			const fullList = [];
 			let available = [];
 			let filteredAvailable = [];
+			let nullCount = 0;
+			let nullArr = [];
 			let groupWeight = {
 				a: 0,
 				b: 0,
@@ -39,6 +41,11 @@ function selectGiftee(req, res, db){
 				if (user.user_id === user_id && user.giftee_id !== null){
 					return res.json("User already has a giftee")
 				} else {}
+
+				if (user.giftee_id === null){
+					nullCount ++;
+					nullArr.push(user.user_id)
+				}
 
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id);
@@ -110,6 +117,13 @@ function selectGiftee(req, res, db){
 
 
 			filteredAvailable = available.filter(val => candidates.includes(val));
+
+
+// check if there is only two choices left, and if so we need to prevent a deadlock
+
+			if (nullCount === 2 && filteredAvailable.filter(val => nullArr.includes(val))){
+				filteredAvailable = filteredAvailable.filter(val => nullArr.includes(val))
+			}
 
 			newGiftee = chooseGiftee(filteredAvailable);
 
