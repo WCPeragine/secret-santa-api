@@ -121,10 +121,10 @@ function selectGiftee(req, res, db){
 
 // check if there is only two choices left, and if so we need to prevent a deadlock
 
-			if (nullCount === 2 && filteredAvailable.filter(val => nullArr.in)){
+			if (nullCount === 2){
 				filteredAvailable = filteredAvailable.filter(val => nullArr.includes(val))
 				newGiftee = filteredAvailable[0]
-				res.json(filteredAvailable)
+				res.json(nullArr)
 			} else {
 				newGiftee = chooseGiftee(filteredAvailable);
 			}
