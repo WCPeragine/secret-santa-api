@@ -12,7 +12,7 @@ function getCandidates(weights){
 
 function selectGiftee(req, res, db){
 	const {user_id, spouse_id, group_id} = req.body
-	db.select('name', 'user_id', 'giftee_id', 'group_id').from('users')
+	db.select('user_id', 'spouse_id', 'giftee_id', 'group_id').from('users')
 	.then (data => {
 
 		if (data.length) {
@@ -44,7 +44,7 @@ function selectGiftee(req, res, db){
 
 				if (user.giftee_id === null){
 					nullCount ++;
-					nullArr.push(user.user_id)
+					nullArr.push(user.user_id, user.spouse_id)
 				}
 
 				if (user.giftee_id !== null){
