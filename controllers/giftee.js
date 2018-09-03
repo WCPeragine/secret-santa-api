@@ -31,6 +31,9 @@ function selectGiftee(req, res, db){
 				d: 0
 			}
 
+//for the love of god man please refactor all this stuff!!!!!!!
+
+
 // figure out which giftees are taken and set weight for already picked groups 
 			data.forEach( user => {
 				if (user.user_id === user_id && user.giftee_id !== null){
@@ -113,7 +116,8 @@ function selectGiftee(req, res, db){
 
 // update database and respond with the chosen giftee
 			db('users')
-			.where('user_id', '=', user_id)
+			.where('user_id': user_id,
+				'giftee_id': null)
 			.update({
 				'giftee_id': newGiftee
 			})
