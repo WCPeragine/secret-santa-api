@@ -124,7 +124,6 @@ function selectGiftee(req, res, db){
 			if (nullCount === 2){
 				filteredAvailable = filteredAvailable.filter(val => nullArr.includes(val))
 				newGiftee = filteredAvailable[0]
-				res.json(filteredAvailable)
 			} else {
 				newGiftee = chooseGiftee(filteredAvailable);
 			}
