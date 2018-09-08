@@ -12,7 +12,7 @@ function getCandidates(weights){
 
 function selectGiftee(req, res, db){
 	const {user_id, spouse_id, group_id} = req.body;
-	if (!user_id || !spouse_id, || !group_id){
+	if (!user_id || !spouse_id || !group_id){
 		return res.status(400).json('Missing Credentials')
 	}
 
