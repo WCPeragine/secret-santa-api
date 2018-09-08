@@ -17,8 +17,7 @@ function handleRegister(req, res, db, bcrypt){
 				hash: hash
 			})
 			.catch(err => res.status(400).json('Incorrect Email'))
-
-			db.select('email', 'hash').from('login')
+			.then(db.select('email', 'hash').from('login')
 			.where('email', '=', email)
 			.then(data => {
 				const isValid = bcrypt.compareSync(password, data[0].hash);
@@ -33,7 +32,7 @@ function handleRegister(req, res, db, bcrypt){
 					res.status(400).json('Incorrect Credentials')
 				}
 			})
-			.catch(err => res.status(400).json('Incorrect Credentials'))
+			.catch(err => res.status(400).json('Incorrect Credentials')))
 		}
 	})
 

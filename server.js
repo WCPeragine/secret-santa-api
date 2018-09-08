@@ -28,20 +28,26 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signin', (req, res) => {
+	//req.body requires email & password
+	//res.body responds with all the user's info
 	signIn.handleSignIn(req, res, db, bcrypt)
 })
 
 app.post('/register', (req, res) => {
+	//req.body requires email & password
+	//res.body responds with all the user's info
 	register.handleRegister(req, res, db, bcrypt)
 })
 
 app.post('/giftee/select', (req, res) => {
+	//req.body requires user_id, spouse_id, group_id
+	//res.body responds with the giftee_id
 	giftee.selectGiftee(req, res, db)
 })
 
-app.post('/giftee/set', (req, res) => {
-	giftee.setGiftee(req, res, db)
-})
+// app.post('/giftee/set', (req, res) => {
+// 	giftee.setGiftee(req, res, db)
+// })
 
 
 app.listen(process.env.PORT || 4001, () => {
