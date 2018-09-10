@@ -30,13 +30,10 @@ function selectGiftee(req, res, db){
 			let filteredAvailable = [];
 			let nullCount = 0;
 			let nullArr = [];
-			let groupWeight = {
-				a: 0,
-				b: 0,
-				c: 0,
-				d: 0
-			}
-			let {a, b, c, d} = groupWeight;
+			let a = 0;
+			let b = 0;
+			let c = 0;
+			let d = 0;
 
 //for the love of god man please refactor all this stuff!!!!!!!
 
