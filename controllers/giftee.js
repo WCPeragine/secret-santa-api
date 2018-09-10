@@ -132,12 +132,7 @@ function selectGiftee(req, res, db){
 				filteredAvailable = filteredAvailable.filter(val => nullArr.includes(val))
 			}
 			newGiftee = chooseGiftee(filteredAvailable);
-			res.json({
-				a: a,
-				b: b,
-				c: c,
-				d: d
-			})
+
 			res.json({
 				taken: taken,
 				available: available,
