@@ -53,24 +53,24 @@ function selectGiftee(req, res, db){
 					taken.push(user.giftee_id);
 				}
 				switch (user.giftee_id){
-						case 1:
-						case 2:
+						case "1":
+						case "2":
 							a++;
 							break;
-						case 3:
-						case 4:
+						case "3":
+						case "4":
 							b++;
 							break;
-						case 5:
-						case 6:
+						case "5":
+						case "6":
 							c++; 
 							break;
-						case 7:
-						case 8:
+						case "7":
+						case "8":
 							d++;
 							break;
 					}
-				
+
 				if (user.group_id === group_id) {
 					taken.push(user.user_id)
 					switch(user.giftee_id){
