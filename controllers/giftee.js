@@ -130,7 +130,14 @@ function selectGiftee(req, res, db){
 			}
 			newGiftee = chooseGiftee(filteredAvailable);
 
-
+			res.json({
+				taken: taken,
+				available: available,
+				filtered: filteredAvailable,
+				nullArr: nullArr,
+				candidates: candidates,
+				giftee: newGiftee
+			})
 // update database and respond with the chosen giftee
 			db('users')
 			.whereNull('giftee_id')
