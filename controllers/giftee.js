@@ -57,19 +57,19 @@ function selectGiftee(req, res, db){
 					switch (user.giftee_id){
 						case 1:
 						case 2:
-							groupWeight.a++;
+							a++;
 							break;
 						case 3:
 						case 4:
-							groupWeight.b++;
+							b++;
 							break;
 						case 5:
 						case 6:
-							groupWeight.c++; 
+							c++; 
 							break;
 						case 7:
 						case 8:
-							groupWeight.d++;
+							d++;
 							break;
 					}
 				}
@@ -80,15 +80,15 @@ function selectGiftee(req, res, db){
 						case 2:
 						case 3:
 						case 4:
-							groupWeight.a += 10;
-							groupWeight.b += 10;
+							a += 10;
+							b += 10;
 							break;
 						case 5:
 						case 6:
 						case 7:
 						case 8:
-							groupWeight.c += 10;
-							groupWeight.d += 10;
+							c += 10;
+							d += 10;
 							break;
 					}
 				}
@@ -136,6 +136,7 @@ function selectGiftee(req, res, db){
 				filtered: filteredAvailable,
 				nullArr: nullArr,
 				candidates: candidates,
+				groupWeight: groupWeight,
 				giftee: newGiftee
 			})
 // update database and respond with the chosen giftee
