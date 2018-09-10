@@ -42,8 +42,24 @@ function selectGiftee(req, res, db){
 			data.forEach( user => {
 
 				if (user.giftee_id === null){
-					nullCount ++;
-					nullArr.push(user.user_id, user.spouse_id)
+					switch (user.user_id){
+						case 1:
+						case 2:
+							a--;
+							break;
+						case 3:
+						case 4:
+							b--;
+							break;
+						case 5:
+						case 6:
+							c--; 
+							break;
+						case 7:
+						case 8:
+							d--;
+							break;
+					}
 				}
 
 				if (user.giftee_id !== null){
@@ -51,20 +67,14 @@ function selectGiftee(req, res, db){
 				}
 				switch (user.giftee_id){
 						case 1:
-							a++;
-							break;
 						case 2:
 							a++;
 							break;
 						case 3:
-							b++;
-							break;
 						case 4:
 							b++;
 							break;
 						case 5:
-							c++; 
-							break;
 						case 6:
 							c++; 
 							break;
