@@ -122,7 +122,7 @@ function selectGiftee(req, res, db){
 			}
 
 
-			filteredAvailable = available.filter(val => !candidates.includes(val));
+			filteredAvailable = available.filter(val => candidates.includes(val));
 
 
 
