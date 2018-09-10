@@ -102,9 +102,6 @@ function selectGiftee(req, res, db){
 			})
 
 // only add available giftees to available list
-			res.json({
-				a: a, b: b, c: c, d: d
-			})
 
 			available = fullList.filter(val => !taken.includes(val));
 
@@ -122,6 +119,8 @@ function selectGiftee(req, res, db){
 					candidates.push(7, 8);
 					break;
 			}
+
+			res.json(candidates)
 
 
 			filteredAvailable = available.filter(val => candidates.includes(val));
