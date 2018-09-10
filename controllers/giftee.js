@@ -105,6 +105,15 @@ function selectGiftee(req, res, db){
 
 			available = fullList.filter(val => !taken.includes(val));
 
+			res.json({
+				taken: taken,
+				available: available,
+				filtered: filteredAvailable,
+				nullArr: nullArr,
+				candidates: candidates,
+				groupWeight: groupWeight
+			})
+
 // Choose from what is available based on groupWeight
 			let lowWeight = Math.min(a, b, c, d);
 			let candidates = [];
@@ -120,14 +129,7 @@ function selectGiftee(req, res, db){
 					break;
 			}
 
-res.json({
-				taken: taken,
-				available: available,
-				filtered: filteredAvailable,
-				nullArr: nullArr,
-				candidates: candidates,
-				groupWeight: groupWeight
-			})
+			
 
 			filteredAvailable = available.filter(val => !candidates.includes(val));
 
