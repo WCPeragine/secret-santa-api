@@ -126,8 +126,7 @@ res.json({
 				filtered: filteredAvailable,
 				nullArr: nullArr,
 				candidates: candidates,
-				groupWeight: groupWeight,
-				giftee: newGiftee
+				groupWeight: groupWeight
 			})
 
 			filteredAvailable = available.filter(val => !candidates.includes(val));
