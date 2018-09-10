@@ -36,13 +36,14 @@ function selectGiftee(req, res, db){
 				c: 0,
 				d: 0
 			}
-			let {a, b, c, d} = groupWeight;
 
 //for the love of god man please refactor all this stuff!!!!!!!
 
 
 // figure out which giftees are taken and set weight for already picked groups 
 			data.forEach( user => {
+
+				let {a, b, c, d} = groupWeight;
 
 				if (user.giftee_id === null){
 					nullCount ++;
