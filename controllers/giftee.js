@@ -139,7 +139,6 @@ function selectGiftee(req, res, db){
 				filtered: filteredAvailable,
 				nullArr: nullArr,
 				candidates: candidates,
-				groupWeight: groupWeight,
 				giftee: newGiftee
 			})
 // update database and respond with the chosen giftee
