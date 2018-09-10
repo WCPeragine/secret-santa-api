@@ -127,10 +127,8 @@ function selectGiftee(req, res, db){
 
 			if (nullCount <= 3){
 				filteredAvailable = filteredAvailable.filter(val => nullArr.includes(val))
-				newGiftee = filteredAvailable[0]
-			} else {
-				newGiftee = chooseGiftee(filteredAvailable);
 			}
+			newGiftee = chooseGiftee(filteredAvailable);
 
 
 // update database and respond with the chosen giftee
