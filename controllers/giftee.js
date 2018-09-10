@@ -128,7 +128,7 @@ function selectGiftee(req, res, db){
 
 // check if there is three or less choices left, and if so we need to prevent a deadlock
 
-			if (nullCount <= 3){
+			if (nullCount <= 4){
 				filteredAvailable = filteredAvailable.filter(val => !nullArr.includes(val))
 			}
 			newGiftee = chooseGiftee(filteredAvailable);
