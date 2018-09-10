@@ -85,7 +85,6 @@ function selectGiftee(req, res, db){
 					}
 
 				if (user.group_id === group_id) {
-					taken.push(user.user_id)
 					switch(user.giftee_id){
 						case 1:
 						case 2:
@@ -99,6 +98,20 @@ function selectGiftee(req, res, db){
 						case 7:
 						case 8:
 							c += 10;
+							d += 10;
+							break;
+					}
+					switch(user.group_id){
+						case 1:
+							a += 10;
+							break;
+						case 2:
+							b += 10;
+							break;
+						case 3:
+							c += 10;
+							break;
+						case 4:
 							d += 10;
 							break;
 					}
