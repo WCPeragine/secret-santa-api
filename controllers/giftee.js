@@ -105,12 +105,6 @@ function selectGiftee(req, res, db){
 
 			available = fullList.filter(val => !taken.includes(val));
 
-			res.json({
-				a: a,
-				b: b,
-				c: c,
-				d: d
-			})
 
 // Choose from what is available based on groupWeight
 			let lowWeight = Math.min(a, b, c, d);
@@ -127,7 +121,12 @@ function selectGiftee(req, res, db){
 					break;
 			}
 
-			
+			res.json({
+				a: a,
+				b: b,
+				c: c,
+				d: d
+			})
 
 			filteredAvailable = available.filter(val => !candidates.includes(val));
 
