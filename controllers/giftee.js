@@ -109,18 +109,18 @@ function selectGiftee(req, res, db){
 // Choose from what is available based on groupWeight
 			let lowWeight = Math.min(a, b, c, d);
 			let candidates = [];
-			switch(lowWeight){
-				case a:
+			if(lowWeight === a){
 					candidates.push(1, 2);
-				case b:
-					candidates.push(3, 4);
-				case c:
-					candidates.push(5, 6);
-				case d:
-					candidates.push(7, 8);
-					break;
 			}
-
+			if(lowWeight === b){
+					candidates.push(3, 4);
+			}
+			if(lowWeight === c){
+					candidates.push(5, 6);
+			}
+			if(lowWeight === d){
+					candidates.push(7, 8);
+			}
 
 			filteredAvailable = available.filter(val => candidates.includes(val));
 
@@ -139,6 +139,7 @@ function selectGiftee(req, res, db){
 				filtered: filteredAvailable,
 				nullArr: nullArr,
 				candidates: candidates,
+				lowWeight: lowWeight,
 				a: a,
 				b: b,
 				c: c,
