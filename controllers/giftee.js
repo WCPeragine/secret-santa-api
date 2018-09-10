@@ -36,6 +36,7 @@ function selectGiftee(req, res, db){
 				c: 0,
 				d: 0
 			}
+			let {a, b, c, d} = groupWeight;
 
 //for the love of god man please refactor all this stuff!!!!!!!
 
@@ -104,7 +105,6 @@ function selectGiftee(req, res, db){
 			available = fullList.filter(val => !taken.includes(val));
 
 // Choose from what is available based on groupWeight
-			let {a, b, c, d} = groupWeight;
 			let lowWeight = Math.min(a, b, c, d);
 			let candidates = [];
 			switch(lowWeight){
