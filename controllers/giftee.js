@@ -43,9 +43,6 @@ function selectGiftee(req, res, db){
 
 // figure out which giftees are taken and set weight for already picked groups 
 			data.forEach( user => {
-				if (user.user_id === user_id && user.giftee_id !== null){
-					return res.json("User already has a giftee")
-				} else {}
 
 				if (user.giftee_id === null){
 					nullCount ++;
@@ -54,7 +51,8 @@ function selectGiftee(req, res, db){
 
 				if (user.giftee_id !== null){
 					taken.push(user.giftee_id);
-					switch (user.giftee_id){
+				}
+				switch (user.giftee_id){
 						case 1:
 						case 2:
 							a++;
@@ -72,7 +70,7 @@ function selectGiftee(req, res, db){
 							d++;
 							break;
 					}
-				}
+				
 				if (user.group_id === group_id) {
 					taken.push(user.user_id)
 					switch(user.giftee_id){
