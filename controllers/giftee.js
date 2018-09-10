@@ -120,9 +120,6 @@ function selectGiftee(req, res, db){
 					break;
 			}
 
-
-
-			filteredAvailable = available.filter(val => !candidates.includes(val));
 res.json({
 				taken: taken,
 				available: available,
@@ -132,6 +129,9 @@ res.json({
 				groupWeight: groupWeight,
 				giftee: newGiftee
 			})
+
+			filteredAvailable = available.filter(val => !candidates.includes(val));
+
 
 // check if there is three or less choices left, and if so we need to prevent a deadlock
 
