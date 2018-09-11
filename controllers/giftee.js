@@ -176,7 +176,8 @@ function selectGiftee(req, res, db){
 
 	})
 	.then(() => {
-		db.select('*').from('users').where('user_id', '=', user_id)
+		db.select('gender', 'giftee_id', 'group_id', 'user_id', 'name', 'spouse_id')
+		.from('users').where('user_id', '=', user_id)
 		.then((data) => {
 			res.json(data[0])
 		})
