@@ -163,10 +163,6 @@ function selectGiftee(req, res, db){
 			.update({
 				'giftee_id': newGiftee
 			})
-			.then( () => {
-				res.json(newGiftee)
-				
-			})
 			.catch(err => res.status(400).json("Unable to update"))
 
 
@@ -178,6 +174,12 @@ function selectGiftee(req, res, db){
 		}
 	
 
+	})
+	.then(() => {
+		db.select('*').from('users').where('user_id', '=', user_id)
+		.then((data) => {
+			res.json(data[0])
+		})
 	})
 	.catch(err => res.status(400).json('Could not load giftees'))
 
