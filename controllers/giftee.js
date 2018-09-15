@@ -156,21 +156,6 @@ function selectGiftee(req, res, db){
 			}
 			newGiftee = chooseGiftee(filteredAvailable);
 
-			res.json({
-				lowWeight,
-				candidates,
-				taken,
-				filteredAvailable,
-				available,
-				nullCount,
-				nullArr,
-				a,
-				b,
-				c,
-				d,
-				newGiftee
-			})
-
 // update database and respond with the chosen giftee
 			db('users')
 			.whereNull('giftee_id')
