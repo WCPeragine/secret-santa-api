@@ -26,6 +26,7 @@ function handleRegister(req, res, db, bcrypt){
 			.catch(err => res.status(400).json('Could not find user'))
 		}
 	})
+	.catch(err => res.status(400).json('Could not find user'))
 
 	
 }
