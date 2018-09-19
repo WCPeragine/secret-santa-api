@@ -6,7 +6,8 @@ const knex = require('knex');
 
 const register = require('./controllers/register');
 const signIn = require('./controllers/signin');
-const giftee = require('./controllers/giftee')
+const giftee = require('./controllers/giftee');
+const wishlist = require('./controllers/wishlist')
 
 
 const db = knex({
