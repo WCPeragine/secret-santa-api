@@ -7,7 +7,7 @@ const knex = require('knex');
 const register = require('./controllers/register');
 const signIn = require('./controllers/signin');
 const giftee = require('./controllers/giftee');
-const wishlist = require('./controllers/wishlist')
+const wishlist = require('./controllers/wishlist');
 
 
 const db = knex({
@@ -16,7 +16,7 @@ const db = knex({
     connectionString : process.env.DATABASE_URL,
     ssl: true
   }
-});
+})
 
 const app = express();
 
@@ -44,7 +44,7 @@ app.post('/giftee/select', (req, res) => {
 	//req.body requires user_id, spouse_id, group_id
 	//res.body responds with the giftee_id
 	giftee.selectGiftee(req, res, db)
-
+})
 
   app.post('/wishlist/user', (req, res) => {
   	//req.body requires user_id
