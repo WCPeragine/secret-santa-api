@@ -43,12 +43,13 @@ app.post('/giftee/select', (req, res) => {
 	//req.body requires user_id, spouse_id, group_id
 	//res.body responds with the giftee_id
 	giftee.selectGiftee(req, res, db)
-})
 
-// app.post('/giftee/set', (req, res) => {
-// 	giftee.setGiftee(req, res, db)
-// })
 
+  app.post('/wishlist/user', (req, res) => {
+  	//req.body requires user_id
+  	//res.body responds with the user's wishlist
+  	wishlist.userWishlist(req, res, db)
+  })
 
 app.listen(process.env.PORT || 4001, () => {
 	console.log(`app is running on port ${process.env.PORT}`)
