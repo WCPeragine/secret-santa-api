@@ -1,4 +1,4 @@
-function userWishlist(user_id){
+function userWishlist(req, res, db){
   const { user_id } = req.body;
 
   if (!user_id) {
