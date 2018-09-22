@@ -22,7 +22,7 @@ function userWishlistRating(req, res, db){
     return res.status(400).json("Unable to` load wishlist");
   }
 
-  db(wishlist)
+  db('wishlist')
   .where('gift_name', '=', gift_name)
   .update({gift_rank: rating})
   .then(() => {
