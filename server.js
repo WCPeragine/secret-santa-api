@@ -52,6 +52,12 @@ app.post('/giftee/select', (req, res) => {
   	wishlist.userWishlist(req, res, db)
   })
 
+  app.post('/wishlist/user/rating', (req, res) => {
+  	//req.body requires user_id, gift_name, rating
+  	//res.body responds with the user's wishlist
+  	wishlist.userWishlistRating(req, res, db)
+  })
+
 app.listen(process.env.PORT || 4001, () => {
 	console.log(`app is running on port ${process.env.PORT}`)
 })
