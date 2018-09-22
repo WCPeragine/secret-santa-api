@@ -34,8 +34,10 @@ function userWishlistRating(req, res, db){
     })
     .catch(err => res.status(400).json('Could not find user'))
   })
+  .catch(err => res.status(400).json('Could not update'))
 }
 
 module.exports = {
-  userWishlist
+  userWishlist,
+  userWishlistRating
 }
