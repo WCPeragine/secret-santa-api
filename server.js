@@ -52,10 +52,10 @@ app.post('/giftee/select', (req, res) => {
   	wishlist.userWishlist(req, res, db)
   })
 
-  app.post('/wishlist/user/rating', (req, res) => {
-  	//req.body requires user_id, gift_name, rating
-  	//res.body responds with the user's wishlist
-  	wishlist.userWishlistRating(req, res, db)
+  app.post('/wishlist/user/rank', (req, res) => {
+  	//req.body requires giftUp, giftDown, user_id
+  	//res.body responds with confirmation
+  	wishlist.handleRank(req, res, db)
   })
 
 app.listen(process.env.PORT || 4001, () => {
