@@ -16,8 +16,8 @@ function userWishlist(req, res, db){
 }
 
 function handleRank(req, res, db){
-  const { giftUp, giftDown, user_id } = req.body;
-  if (!user_id || !giftUp || !giftDown || giftUp.gift_rank === 0) {
+  const { giftUp, giftDown, user_id, maxLength } = req.body;
+  if (!user_id || !giftUp || !giftDown || giftUp.gift_rank <= 0 || giftDown.gift_rank >= maxLength) {
       return res.status(400).json("Unable to load wishlist");
     } else {
       db('wishlist')
