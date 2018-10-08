@@ -17,23 +17,22 @@ function userWishlist(req, res, db){
 
 function handleRank(req, res, db){
   const { giftUp, giftDown, user_id } = req.body;
-  if (!user_id || !giftUp || !giftDown) {
+  if (!user_id || !giftUp || !giftDown || giftUp.gift_rank === 0) {
       return res.status(400).json("Unable to load wishlist");
+    } else {
+      db('wishlist')
+      .where('gift_name', '=', giftUp.gift_name)
+      .update({gift_rank: giftUp.gift_rank})
+      .then(() => {
+        db('wishlist')
+        .where('gift_name', '=', giftDown.gift_name)
+        .update({gift_rank: giftDown.gift_rank})
+        .then(() => {
+          res.json('confirmed')
+        })
+      })
+      .catch(err => res.status(400).json('denied'))
     }
-
-  db('wishlist')
-  .where('gift_name', '=', giftUp.gift_name)
-  .update({gift_rank: giftUp.gift_rank})
-  .then(() => {
-    db('wishlist')
-    .where('gift_name', '=', giftDown.gift_name)
-    .update({gift_rank: giftDown.gift_rank})
-    .then(() => {
-      res.json('confirmed')
-    })
-  })
-  .catch(err => res.status(400).json('denied'))
-
 }
 
 // function userWishlistRating(req, res, db){
