@@ -47,11 +47,11 @@ function handleNewItem(req, res, db) {
   } else {
     db("wishlist")
       .insert([
+        { user_id: user_id },
         { gift_name: gift_name },
         { gift_rank: gift_rank },
         { gift_link: gift_link },
-        { comments: comments },
-        { user_id: user_id }
+        { comments: comments }
       ])
       .then(() => {
         res.json("Wishlist Updated!");
