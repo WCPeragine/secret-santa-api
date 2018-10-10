@@ -46,13 +46,13 @@ function handleNewItem(req, res, db) {
   if (!user_id || gift_rank < 1 || !gift_name) {
   } else {
     db("wishlist")
-      .insert([
-        { user_id: user_id },
-        { gift_name: gift_name },
-        { gift_rank: gift_rank },
-        { gift_link: gift_link },
-        { comments: comments }
-      ])
+      .insert({
+        user_id: user_id,
+        gift_name: gift_name,
+        gift_rank: gift_rank,
+        gift_link: gift_link,
+        comments: comments
+      })
       .then(() => {
         res.json("Wishlist Updated!");
       });
