@@ -44,12 +44,11 @@ function handleNewItem(req, res, db) {
   const { user_id, giftLength, gift_name, gift_link, comments } = req.body;
   const gift_rank = Number(giftLength) + 1;
   if (!user_id || gift_rank < 1 || !gift_name) {
-    return res.status(400).json("Please try again");
   } else {
     res.json([
       { gift_name: gift_name },
       { gift_rank: gift_rank },
-      { gift_rank: gift_link },
+      { gift_link: gift_link },
       { comments: comments },
       { user_id: user_id }
     ]);
