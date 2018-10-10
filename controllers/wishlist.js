@@ -45,18 +45,11 @@ function handleNewItem(req, res, db) {
   const gift_rank = Number(giftLength) + 1;
   if (!user_id || gift_rank < 1 || !gift_name) {
   } else {
-    res.json([
-      { gift_name: gift_name },
-      { gift_rank: gift_rank },
-      { gift_link: gift_link },
-      { comments: comments },
-      { user_id: user_id }
-    ]);
     db("wishlist")
       .insert([
         { gift_name: gift_name },
         { gift_rank: gift_rank },
-        { gift_rank: gift_link },
+        { gift_link: gift_link },
         { comments: comments },
         { user_id: user_id }
       ])
