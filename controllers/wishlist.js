@@ -46,6 +46,13 @@ function handleNewItem(req, res, db) {
   if (!user_id || gift_rank < 1 || !gift_name) {
     return res.status(400).json("Please try again");
   } else {
+    res.json([
+      { gift_name: gift_name },
+      { gift_rank: gift_rank },
+      { gift_rank: gift_link },
+      { comments: comments },
+      { user_id: user_id }
+    ]);
     db("wishlist")
       .insert([
         { gift_name: gift_name },
