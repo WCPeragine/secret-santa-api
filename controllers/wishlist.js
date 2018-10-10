@@ -42,13 +42,14 @@ function handleRank(req, res, db) {
 
 function handleNewItem(req, res, db) {
   const { user_id, giftLength, gift_name, gift_link, comments } = req.body;
-  if (!user_id || giftLength >= 0 || !gift_name) {
+  giftLength = Number(giftLength) + 1;
+  if (!user_id || giftLength > 0 || !gift_name) {
     return res.status(400).json("Please try again");
   } else {
     db("wishlist")
       .insert({
         gift_name,
-        rank: giftLength + 1,
+        rank: giftLength,
         gift_link,
         comments,
         user_id
