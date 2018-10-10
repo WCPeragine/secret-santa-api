@@ -44,7 +44,9 @@ function handleNewItem(req, res, db) {
   const { user_id, giftLength, gift_name, gift_link, comments } = req.body;
   let gift_length = Number(giftLength) + 1;
   if (!user_id || gift_length > 0 || !gift_name) {
-    return res.status(400).json("Please try again");
+    return res
+      .status(400)
+      .json({ user_id, gift_length, gift_name, gift_link, comments });
   } else {
     db("wishlist")
       .insert({
