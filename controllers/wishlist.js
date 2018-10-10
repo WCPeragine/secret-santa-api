@@ -42,7 +42,7 @@ function handleRank(req, res, db) {
 
 function handleNewItem(req, res, db) {
   const { user_id, giftLength, gift_name, gift_link, comments } = req.body;
-  if (!user_id || !giftLength || !gift_name || !gift_link || !comments) {
+  if (!user_id || !giftLength || !gift_name) {
     return res.status(400).json("Please try again");
   } else {
     db("wishlist")
