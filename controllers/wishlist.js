@@ -45,13 +45,17 @@ function handleNewItem(req, res, db) {
   if (!user_id || !giftLength || !gift_name || !gift_link || !comments) {
     return res.status(400).json("Please try again");
   } else {
-    db("wishlist").insert({
-      gift_name,
-      rank: giftLength + 1,
-      gift_link,
-      comments,
-      user_id
-    });
+    db("wishlist")
+      .insert({
+        gift_name,
+        rank: giftLength + 1,
+        gift_link,
+        comments,
+        user_id
+      })
+      .then(() => {
+        res.json("Wishlist Updated!");
+      });
   }
 }
 
