@@ -47,7 +47,13 @@ function handleNewItem(req, res, db) {
     return res.status(400).json("Please try again");
   } else {
     db("wishlist")
-      .insert([gift_name, { rank: gift_length }, gift_link, comments, user_id])
+      .insert([
+        { gift_name: gift_name },
+        { rank: gift_length },
+        { gift_rank: gift_link },
+        { comments: comments },
+        { user_id: user_id }
+      ])
       .then(() => {
         res.json("Wishlist Updated!");
       });
