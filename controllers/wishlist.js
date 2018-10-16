@@ -71,6 +71,12 @@ function removeItem(req, res, db) {
       .andWhere("user_id", "=", user_id)
       .del()
       .then(() => {
+        db("wishlist")
+          .where("user_id", "=", user_id)
+          .andWhere("gift_rank", ">", gift_rank)
+          .decrement("gift_rank", 1);
+      })
+      .then(() => {
         res.json("Wishlist Updated!");
       });
   }
