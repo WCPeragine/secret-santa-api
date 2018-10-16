@@ -62,6 +62,12 @@ app.post("/wishlist/user/add", (req, res) => {
   wishlist.handleNewItem(req, res, db);
 });
 
+app.post("/wishlist/user/remove", (req, res) => {
+  //req.body requires user_id, gift_name, gift_rank
+  //res.body responds with confirmation
+  wishlist.removeItem(req, res, db);
+});
+
 app.listen(process.env.PORT || 4001, () => {
   console.log(`app is running on port ${process.env.PORT}`);
 });

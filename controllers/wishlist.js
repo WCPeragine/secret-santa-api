@@ -44,6 +44,7 @@ function handleNewItem(req, res, db) {
   const { user_id, giftLength, gift_name, gift_link, comments } = req.body;
   const gift_rank = Number(giftLength) + 1;
   if (!user_id || gift_rank < 1 || !gift_name) {
+    return res.json("Not enough information");
   } else {
     db("wishlist")
       .insert({
@@ -53,6 +54,22 @@ function handleNewItem(req, res, db) {
         gift_link: gift_link,
         comments: comments
       })
+      .then(() => {
+        res.json("Wishlist Updated!");
+      });
+  }
+}
+
+function removeItem(req, res, db) {
+  const { user_id, gift_name, gift_rank } = req.body;
+  if (!user_id || gift_rank < 1 || !gift_name) {
+    return res.json("Not enough information");
+  } else {
+    db("wishlist")
+      .where("gift_rank", "=", gift_rank)
+      .andWhere("gift_name", "=", gift_name)
+      .andWhere("user_id", "=", user_id)
+      .del()
       .then(() => {
         res.json("Wishlist Updated!");
       });
@@ -84,5 +101,6 @@ function handleNewItem(req, res, db) {
 module.exports = {
   userWishlist,
   handleRank,
-  handleNewItem
+  handleNewItem,
+  removeItem
 };
